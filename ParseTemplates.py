@@ -1,5 +1,31 @@
 from collections              import namedtuple
 
+'''
+This module defines some basic data structures, namely Result and NamedResult
+
+Result is what a bare template will return, it contains:
+result    -a boolean indicating success
+parsed    -a list of parsed tokens, if the parser is set to consume them
+remaining -a list of tokens that were not parsed
+
+NamedResult is returned only by Parser Classes:
+it returns all of the same things as result, except it also returns a field name, which is a string
+
+It also defines templates:
+parseTemplate() -takes a function(consumer), which should return (result, consumed):
+    result      -a boolean indicating success
+    consumed    -the tokens that were parsed
+
+    parseTemplate() will then handle the optional consumption of the parsed tokens,
+    and then return a Result namedtuple accordingly
+
+singleTemplate() -a layer around parseTemplate meant for making single-token parsers
+    takes a comparison function (string -> bool) and a boolean determining consumption
+
+multiTemplate() is similar to singletemplate, but takes a consumer and parses it repeatedly
+
+'''
+
 Result      = namedtuple('Result', ['result', 'parsed', 'remaining'])
 NamedResult = namedtuple('Result', ['result', 'parsed', 'remaining', 'name'])
 

@@ -1,7 +1,19 @@
 from ParserClass    import *
 from ParseTemplates import *
 
-# Single Token Parsers
+'''
+Single Token Parsers:
+just()     -returns a function that parses a string exactly,
+wildcard() -parses single string (non whitespace),
+noneOf()   -takes a list of parsers and tries them against a single string
+allOf()    -does the same, but ensuring all parsers pass
+subsetOf() -takes any container of characters and ensures that the string consists entirely of those characters
+parseAny() -returns the result of the first matching parser out of a list of parsers it is given
+
+Multi Token Parsers:
+many()  -repeats a single parser until it fails, but returns true no matter what
+until() -parsers with a second parser (wildcard by default) until it's first parser is true, optionally returning either or both results
+'''
 
 def just(string, consume=True):
     return singleTemplate(lambda s : string == s, consume)

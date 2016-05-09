@@ -2,6 +2,14 @@ from re             import findall # used only for tokenization
 from copy           import deepcopy
 from ParseTemplates import *
 
+'''
+Defines a Parser class and a tokenize() function
+
+Parser is a formal version of bare parsers, mostly in that it is named
+It takes a list of parsers, and parses them in sequence
+It also takes a string(name), which it returns with NamedResult
+'''
+
 def tokenize(sentence):
     return findall(r"[\w']+|[.,!?;]", sentence)
 

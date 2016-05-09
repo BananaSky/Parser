@@ -1,6 +1,8 @@
 from   ParseBase import *
 import unittest
 
+# A set of simple unit tests to make sure everything works as advertised
+
 def POStest():
     p = Parser([article, parseTags('N', 'V', 'RB')])
     return p.parse(['a', 'man', 'running', 'quickly'])
