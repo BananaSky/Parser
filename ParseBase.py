@@ -1,9 +1,12 @@
 from Parse import *
 import nltk
+import string
 
-punctuation = subsetOf(set(".?!()\'\","))
-spaces      = subsetOf(set(" \t\n"))
-word        = noneOf([spaces, punctuation])
+punctuation = subsetOf(string.punctuation)
+whitespace  = subsetOf(string.whitespace)
+digits      = subsetOf(string.digits)
+letters     = subsetOf(string.ascii_letters)
+word        = noneOf([whitespace, punctuation, digits])
 article     = parseAny([just('a'), just('an')], False)
 
 noun      = singleTemplate(lambda s : nltk.pos_tag([s])[0][1][0] == 'N', True)
