@@ -1,4 +1,4 @@
-from .Parse import *
+from .Parsers import *
 import nltk
 import string
 

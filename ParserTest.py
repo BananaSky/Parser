@@ -1,4 +1,4 @@
-from   Parse.ParseBase import *
+from   Parse.Parsers import *
 import unittest
 
 # A set of simple unit tests to make sure everything works as advertised

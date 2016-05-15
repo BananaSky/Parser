@@ -1,5 +1,6 @@
-from re             import findall # used only for tokenization
-from copy           import deepcopy
+from re              import findall # used only for tokenization
+from copy            import deepcopy
+from .ParseTemplates import Result, NamedResult
 
 '''
 Defines a Parser class and a tokenize() function
@@ -19,6 +20,9 @@ class Parser(object):
 
     def external_parse(self, sentence):
         return self.parse(tokenize(sentence))
+
+    def __call__(self, tokens):
+        return self.parse(tokens)
 
     def parse(self, original_tokens):
         tokens = deepcopy(original_tokens)
